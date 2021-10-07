@@ -1,12 +1,13 @@
-#include<stdio.h>
+#include <stdio.h>
+
 /**
  * main - print 1 to 100,
- * Replace
  * multiples of 3 with Fizz,
  * multiples of 5 with Buzz
  * and multiple of both 3 and 5 with FizzBuzz
- * Return: 0
+ * Return: 0 on success
  */
+
 int main(void)
 {
 	int i;
@@ -22,7 +23,7 @@ int main(void)
 		else
 			printf("%d", i);
 
-		if (i < 10)
+		if (i < 100)
 			printf(" ");
 	}
 	printf("\n");
