@@ -6,7 +6,7 @@
  * @argv: An array of size argc.
  * Return: 0 on success, 1 if two arguments not given
  */
-int main(__attribute__((unused)) int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 	if (argc != 3)
 	{
