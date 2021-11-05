@@ -1,20 +1,17 @@
 ; File: 100-hello_world.asm
 ; Desc: 64-bit assembly program that prints
-; Hello, World followed by a new line.
+;       Hello, World followed by a new line.
+	global    main
 
-section .text
-   global main
+	section   .text
+main:   mov       rax, 1
+	mov       rdi, 1
+	mov       rsi, message
+	mov       rdx, 13
+	syscall
+	mov       rax, 60
+	xor       rdi, rdi
+	syscall
 
-main:
-   mov edx,len
-   mov ecx,msg
-   mov ebx,1
-   mov eax,4
-   int 0x80
-
-   mov eax,0
-   int 0x80
-
-section .data
-   msg: db 'Hello, World', 0xa
-   len: equ $ - msg
+	section   .data
+message:  db        "Hello, World", 10
