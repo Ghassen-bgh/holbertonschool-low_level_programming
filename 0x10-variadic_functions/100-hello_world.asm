@@ -1,11 +1,11 @@
 ; File: 100-hello_world.asm
 ; Desc: 64-bit assembly program that prints
 ;Hello, World followed by a new line.
-	extern	printf		; the C function, to be called
+	extern	write		; the C function, to be called
 
 	 section .data		; Data section, initialized variables
 msg:	db "Hello, World", 0	; C string needs 0
-fmt:    db "%s", 10, 0	   ; The printf format, "\n",'0'
+fmt:    db "%s", 10, \n	   ; The write format, "\n",'0'
 
 	 section .text	    ; Code section.
 
@@ -16,7 +16,7 @@ main:				; the program label for the entry point
 	mov	rdi,fmt
 	mov	rsi,msg
 	mov	rax,0		; or can be  xor  rax,rax
-	 call    printf		; Call C function
+	 call    write		; Call C function
 
 	pop	rbp		; restore stack
 
