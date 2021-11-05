@@ -1,24 +1,20 @@
 ; File: 100-hello_world.asm
 ; Desc: 64-bit assembly program that prints
-;Hello, World followed by a new line.
-	extern	write		; the C function, to be called
+; Hello, World followed by a new line.
 
-	 section .data		; Data section, initialized variables
-msg:	db "Hello, World", 0	; C string needs 0
-fmt:    db "%s", 10, \n	   ; The write format, "\n",'0'
+section .text
+   global main
 
-	 section .text	    ; Code section.
+main:
+   mov edx,len
+   mov ecx,msg
+   mov ebx,1
+   mov eax,4
+   int 0x80
 
-	 global main		; the standard gcc entry point
-main:				; the program label for the entry point
-	 push    rbp		; set up stack frame, must be alligned
+   mov eax,0
+   int 0x80
 
-	mov	rdi,fmt
-	mov	rsi,msg
-	mov	rax,0		; or can be  xor  rax,rax
-	 call    write		; Call C function
-
-	pop	rbp		; restore stack
-
-	mov	rax,0		; normal, no error, return value
-	ret
+section .data
+   msg: db 'Hello, World', 0xa
+   len: equ $ - msg
