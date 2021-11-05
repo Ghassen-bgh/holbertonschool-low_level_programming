@@ -7,10 +7,10 @@
  * @argv: an array of pointers to the arguments.
  * Return: 0
  */
-int main (int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 	int a, b;
-	int(*f)(int, int);
+	int (*f)(int, int);
 
 	if (argc != 4)
 	{
