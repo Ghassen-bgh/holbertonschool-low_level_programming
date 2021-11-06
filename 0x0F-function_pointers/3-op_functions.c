@@ -45,7 +45,7 @@ int op_div(int a, int b)
 }
 
 /**
- * op_add - modulus
+ * op_mod - modulus
  * @a: int
  * @b: int
  * Return: the remainder of the division of a by b
