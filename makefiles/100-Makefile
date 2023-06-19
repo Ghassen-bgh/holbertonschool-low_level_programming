@@ -1,0 +1,28 @@
+CC = gcc
+SRC = main.c school.c
+OBJ = $(SRC:.c=.o)
+NAME = school
+CFLAGS = -Wall -Werror -Wextra -pedantic
+
+.PHONY: all clean fclean oclean re
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
+
+$(OBJ): %.o: %.c m.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+	$(CC) -E main.c | grep "^#.*\".*\"" -o | xargs -L1 rm -f
+	$(CC) -E school.c | grep "^#.*\".*\"" -o | xargs -L1 rm -f
+	$(CC) -E m.h | grep "^#.*\".*\"" -o | xargs -L1 rm -f
+	rm -f $(NAME)
+
+oclean:
+	rm -f $(OBJ)
+
+fclean: clean oclean
+
+re: fclean all
